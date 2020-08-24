@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/World/HiddenPathsTileSet.tres" type="TileSet" id=1]
+[ext_resource path="res://src/World/HiddenPath.gd" type="Script" id=2]
+
+[node name="HiddenPath" type="TileMap"]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+collision_layer = 16
+collision_mask = 9
+format = 1
+script = ExtResource( 2 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Audio" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0

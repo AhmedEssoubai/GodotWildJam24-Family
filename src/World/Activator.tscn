@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/World/Activator.gd" type="Script" id=1]
+[ext_resource path="res://assets/environment/button.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 5, 2 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Activate"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 0.435275, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 3 ) ]
+}
+
+[node name="Activator" type="Area2D"]
+collision_layer = 0
+collision_mask = 64
+script = ExtResource( 1 )
+AudioManager = NodePath("../AudioManager")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 6 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+anims/Activate = SubResource( 2 )
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+volume_db = -20.0
+[connection signal="body_entered" from="." to="." method="activate" binds= [ true ]]
+[connection signal="body_exited" from="." to="." method="activate" binds= [ false ]]

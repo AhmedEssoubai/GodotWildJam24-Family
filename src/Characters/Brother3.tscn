@@ -1,0 +1,302 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://src/Characters/PickUpObjects.gd" type="Script" id=1]
+[ext_resource path="res://assets/characters/blue.png" type="Texture" id=2]
+[ext_resource path="res://assets/vfx/light.png" type="Texture" id=3]
+[ext_resource path="res://assets/pickups/gem.png" type="Texture" id=4]
+[ext_resource path="res://src/Characters/Control.gd" type="Script" id=5]
+[ext_resource path="res://src/VFX/zzz.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/vfx/circle.png" type="Texture" id=7]
+[ext_resource path="res://assets/font/hint_font.tres" type="DynamicFont" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 4.02732, 3.2747 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Idel"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 5 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Jump"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Land"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 1 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Stand"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Idel"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 0.9 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 1 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.5, 1.5 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.6, 0.4 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 5 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="CircleShape2D" id=10]
+radius = 8.0
+
+[sub_resource type="Gradient" id=11]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=12]
+gradient = SubResource( 11 )
+
+[sub_resource type="Curve" id=13]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.436364 ), -1.97172, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=14]
+curve = SubResource( 13 )
+
+[sub_resource type="ParticlesMaterial" id=15]
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+spread = 120.0
+gravity = Vector3( 0, 30, 0 )
+initial_velocity = 30.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 0.2
+scale_curve = SubResource( 14 )
+color_ramp = SubResource( 12 )
+
+[sub_resource type="Animation" id=16]
+resource_name = "Show"
+length = 0.3
+
+[node name="Brother3" type="KinematicBody2D"]
+scale = Vector2( 1.3, 1.2 )
+collision_layer = 65
+collision_mask = 2147483682
+script = ExtResource( 1 )
+MaxSpeed = 60.0
+JumpHeight = 250.0
+SpriteTexture = ExtResource( 2 )
+TextureColor = Color( 0.235294, 0.67451, 0.843137, 1 )
+HoldingPosition = Vector2( 0, -16 )
+CollisionScale = Vector2( 1, 2.44 )
+ThrowPower = 400.0
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 4.74429 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+hframes = 6
+frame = 5
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+playback_speed = 0.5
+anims/Idel = SubResource( 2 )
+anims/Jump = SubResource( 3 )
+anims/Land = SubResource( 4 )
+anims/Run = SubResource( 5 )
+anims/Stand = SubResource( 6 )
+
+[node name="SquashAnimation" type="AnimationPlayer" parent="."]
+anims/Idel = SubResource( 7 )
+anims/Jump = SubResource( 8 )
+anims/Land = SubResource( 9 )
+
+[node name="Light" type="Light2D" parent="."]
+position = Vector2( 0, -8 )
+texture = ExtResource( 3 )
+texture_scale = 0.3
+energy = 0.5
+range_layer_min = -100
+shadow_enabled = true
+
+[node name="Control" type="Sprite" parent="."]
+position = Vector2( 0, -8 )
+scale = Vector2( 0.83, 0.91 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+ThrowPower = 220.0
+
+[node name="SleepTime" type="Timer" parent="Control"]
+one_shot = true
+
+[node name="PickUpArea" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 28
+
+[node name="Collision" type="CollisionShape2D" parent="PickUpArea"]
+shape = SubResource( 10 )
+
+[node name="zzz" parent="." instance=ExtResource( 6 )]
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+volume_db = -20.0
+
+[node name="DeadParticles" type="Particles2D" parent="."]
+modulate = Color( 0.235294, 0.67451, 0.843137, 1 )
+position = Vector2( 0, 4 )
+emitting = false
+amount = 15
+lifetime = 1.2
+one_shot = true
+speed_scale = 2.0
+explosiveness = 0.57
+process_material = SubResource( 15 )
+texture = ExtResource( 7 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="E" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -2.30769
+margin_top = -20.2083
+margin_right = 2.69231
+margin_bottom = -10.2083
+rect_scale = Vector2( 2, 1e-05 )
+rect_pivot_offset = Vector2( 2, 5 )
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0.811765, 0.776471, 0.721569, 0.215686 )
+text = "e"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EAnimation" type="AnimationPlayer" parent="."]
+playback_speed = 2.0
+anims/Show = SubResource( 16 )
+[connection signal="on_holder_changed" from="." to="Control" method="other_package"]
+[connection signal="timeout" from="Control/SleepTime" to="Control" method="_on_SleepTime_timeout"]
+[connection signal="area_entered" from="PickUpArea" to="." method="_on_PickUpArea_area_entered"]
+[connection signal="area_exited" from="PickUpArea" to="." method="_on_PickUpArea_area_exited"]
+[connection signal="body_entered" from="PickUpArea" to="Control" method="_on_PickUpArea_body_entered"]

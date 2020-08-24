@@ -1,0 +1,26 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://src/Audio/AudioManager.gd" type="Script" id=1]
+[ext_resource path="res://assets/audio/break.ogg" type="AudioStream" id=2]
+[ext_resource path="res://assets/audio/wake.ogg" type="AudioStream" id=3]
+[ext_resource path="res://assets/audio/gem_hit.ogg" type="AudioStream" id=4]
+[ext_resource path="res://assets/audio/throw.ogg" type="AudioStream" id=5]
+[ext_resource path="res://assets/audio/jump1.ogg" type="AudioStream" id=6]
+[ext_resource path="res://assets/audio/coin.ogg" type="AudioStream" id=7]
+[ext_resource path="res://assets/audio/player_hit.ogg" type="AudioStream" id=8]
+[ext_resource path="res://assets/audio/placed.ogg" type="AudioStream" id=9]
+[ext_resource path="res://assets/audio/engine.ogg" type="AudioStream" id=10]
+[ext_resource path="res://assets/audio/pick.ogg" type="AudioStream" id=11]
+[ext_resource path="res://assets/audio/secret.ogg" type="AudioStream" id=12]
+[ext_resource path="res://assets/audio/music.ogg" type="AudioStream" id=13]
+[ext_resource path="res://assets/audio/jump2.ogg" type="AudioStream" id=14]
+[ext_resource path="res://assets/audio/gameover.ogg" type="AudioStream" id=15]
+
+[node name="AudioManager" type="Node"]
+script = ExtResource( 1 )
+Music = ExtResource( 13 )
+AudioSources = [ ExtResource( 2 ), ExtResource( 7 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 14 ), ExtResource( 11 ), ExtResource( 8 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 12 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 15 ) ]
+AudioNames = [ "break", "coin", "collide", "light_jump", "heavy_jump", "pick", "land", "throw", "wake", "secret", "drag", "placed", "game_over" ]
+
+[node name="Audio" type="AudioStreamPlayer" parent="."]
+volume_db = -20.0

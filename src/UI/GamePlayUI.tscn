@@ -1,0 +1,100 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/font/kenney.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://src/UI/main_theme.tres" type="Theme" id=2]
+[ext_resource path="res://src/UI/UIManager.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Pause"
+tracks/0/type = "value"
+tracks/0/path = NodePath("PausePanel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[node name="UI" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 1.52588e-05
+theme = ExtResource( 2 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BreakTime" type="Label" parent="."]
+visible = false
+anchor_left = 0.03
+anchor_top = 0.02
+anchor_right = 0.03
+anchor_bottom = 0.1
+margin_right = 40.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PausePanel" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="PausePanel"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -37.0
+margin_top = 32.0
+margin_right = 37.0
+margin_bottom = 62.0
+custom_fonts/font = SubResource( 1 )
+text = "PAUSE"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseMenu" type="VBoxContainer" parent="PausePanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -44.0
+margin_top = -20.0
+margin_right = 44.0
+margin_bottom = 24.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Resume" type="Button" parent="PausePanel/PauseMenu"]
+margin_right = 88.0
+margin_bottom = 16.0
+text = "Resume"
+
+[node name="Quit" type="Button" parent="PausePanel/PauseMenu"]
+margin_top = 20.0
+margin_right = 88.0
+margin_bottom = 36.0
+text = "Quit"
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+anims/Pause = SubResource( 2 )
+[connection signal="button_down" from="PausePanel/PauseMenu/Resume" to="." method="set_paused" binds= [ false ]]
+[connection signal="button_down" from="PausePanel/PauseMenu/Quit" to="." method="main_menu"]

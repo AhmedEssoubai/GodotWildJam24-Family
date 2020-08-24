@@ -1,0 +1,327 @@
+[gd_scene load_steps=32 format=2]
+
+[ext_resource path="res://src/World/WorldTileSet.tres" type="TileSet" id=1]
+[ext_resource path="res://assets/characters/blue.png" type="Texture" id=2]
+[ext_resource path="res://assets/characters/orange.png" type="Texture" id=3]
+[ext_resource path="res://src/VFX/zzz.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/UI/Thanks.gd" type="Script" id=5]
+[ext_resource path="res://assets/characters/green.png" type="Texture" id=6]
+[ext_resource path="res://src/UI/main_theme.tres" type="Theme" id=7]
+[ext_resource path="res://assets/font/kenney.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://assets/ui/thanks.png" type="Texture" id=9]
+[ext_resource path="res://assets/font/hint_font.tres" type="DynamicFont" id=10]
+[ext_resource path="res://src/Audio/AudioManager.tscn" type="PackedScene" id=11]
+[ext_resource path="res://src/World/EndBlock.tscn" type="PackedScene" id=13]
+[ext_resource path="res://assets/pickups/coin.png" type="Texture" id=14]
+
+[sub_resource type="Curve" id=1]
+max_value = 200.0
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=2]
+curve = SubResource( 1 )
+
+[sub_resource type="Gradient" id=3]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
+
+[sub_resource type="Curve" id=5]
+_data = [ Vector2( 0, 0 ), 0.0, 2.02756, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=6]
+curve = SubResource( 5 )
+
+[sub_resource type="ParticlesMaterial" id=7]
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+spread = 15.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 5.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 0.6
+scale_curve = SubResource( 6 )
+color_ramp = SubResource( 4 )
+anim_speed_curve = SubResource( 2 )
+
+[sub_resource type="Curve" id=8]
+max_value = 200.0
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=9]
+curve = SubResource( 8 )
+
+[sub_resource type="Gradient" id=10]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=11]
+gradient = SubResource( 10 )
+
+[sub_resource type="Curve" id=12]
+_data = [ Vector2( 0, 0 ), 0.0, 2.02756, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=13]
+curve = SubResource( 12 )
+
+[sub_resource type="ParticlesMaterial" id=14]
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+spread = 15.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 5.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 0.6
+scale_curve = SubResource( 13 )
+color_ramp = SubResource( 11 )
+anim_speed_curve = SubResource( 9 )
+
+[sub_resource type="DynamicFont" id=15]
+size = 6
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=16]
+size = 8
+font_data = ExtResource( 8 )
+
+[sub_resource type="Animation" id=17]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Start:rect_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.594604, 0.517632 ),
+"update": 0,
+"values": [ 0.0, 4.0 ]
+}
+
+[sub_resource type="Animation" id=18]
+length = 1.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Title:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6, 0.7, 0.8, 0.9 ),
+"transitions": PoolRealArray( 0.406126, 0.378929, 0.420448, 0.420448, 0.420448 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 1.3, 1.1 ), Vector2( 0.9, 1.1 ), Vector2( 1.2, 1 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Title:margin_left")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6, 0.7, 0.8, 0.9 ),
+"transitions": PoolRealArray( 0.392292, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0, -96.0, -64.0, -88.0, -72.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Start:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.8, 1.2 ),
+"transitions": PoolRealArray( 1, 0.659754, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "idel"
+} ]
+}
+
+[node name="Thanks" type="Node2D"]
+
+[node name="BackgroundMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( -1, 0, 0, -65536, 0, 1, -65535, 0, 1, -65534, 0, 1, -65533, 0, 1, -65532, 0, 1, -65531, 0, 1, -65530, 0, 1, -65529, 0, 1, -65528, 0, 1, -65527, 0, 1, -65526, 0, 1, -65525, 0, 1, -65524, 0, 1, -65523, 0, 1, -65522, 0, 1, -65521, 0, 1, -65520, 0, 1, -65519, 0, 1, -65518, 0, 1, -65517, 0, 1, -65516, 0, 2, 65535, 0, 65536, 0, 0, 65537, 1, 0, 65537, 2, 0, 131073, 3, 0, 131073, 4, 0, 131073, 5, 0, 131073, 6, 0, 131073, 7, 0, 131073, 8, 0, 131073, 9, 0, 131073, 10, 0, 131073, 11, 0, 131073, 12, 0, 131073, 13, 0, 131073, 14, 0, 131073, 15, 0, 131073, 16, 0, 131073, 17, 0, 131073, 18, 0, 65537, 19, 0, 65537, 20, 0, 65538, 131071, 0, 65536, 65536, 0, 65537, 65537, 0, 65538, 65554, 0, 65536, 65555, 0, 65537, 65556, 0, 65538, 196607, 0, 65536, 131072, 0, 65537, 131073, 0, 65538, 131090, 0, 65536, 131091, 0, 65537, 131092, 0, 65538, 262143, 0, 65536, 196608, 0, 65537, 196609, 0, 65538, 196626, 0, 65536, 196627, 0, 65537, 196628, 0, 65538, 327679, 0, 65536, 262144, 0, 65537, 262145, 0, 65537, 262146, 0, 2, 262161, 0, 0, 262162, 0, 65537, 262163, 0, 65537, 262164, 0, 65538, 393215, 0, 65536, 327680, 0, 65537, 327681, 0, 65537, 327682, 0, 65538, 327697, 0, 65536, 327698, 0, 65537, 327699, 0, 65537, 327700, 0, 65538, 458751, 0, 65536, 393216, 0, 65537, 393217, 0, 65537, 393218, 0, 65537, 393219, 0, 2, 393225, 0, 0, 393226, 0, 2, 393232, 0, 0, 393233, 0, 65537, 393234, 0, 65537, 393235, 0, 65537, 393236, 0, 65538, 524287, 0, 65536, 458752, 0, 65537, 458753, 0, 65537, 458754, 0, 65537, 458755, 0, 65538, 458759, 0, 0, 458760, 0, 1, 458761, 0, 65537, 458762, 0, 65537, 458763, 0, 1, 458764, 0, 2, 458768, 0, 65536, 458769, 0, 65537, 458770, 0, 65537, 458771, 0, 65537, 458772, 0, 65538, 589823, 0, 65536, 524288, 0, 65537, 524289, 0, 65537, 524290, 0, 65537, 524291, 0, 65537, 524292, 0, 1, 524293, 0, 1, 524294, 0, 1, 524295, 0, 65537, 524296, 0, 65537, 524297, 0, 65537, 524298, 0, 65537, 524299, 0, 65537, 524300, 0, 65537, 524301, 0, 1, 524302, 0, 1, 524303, 0, 1, 524304, 0, 65537, 524305, 0, 65537, 524306, 0, 65537, 524307, 0, 65537, 524308, 0, 65538, 655359, 0, 65536, 589824, 0, 65537, 589825, 0, 65537, 589826, 0, 65537, 589827, 0, 65537, 589828, 0, 65537, 589829, 0, 65537, 589830, 0, 65537, 589831, 0, 65537, 589832, 0, 65537, 589833, 0, 65537, 589834, 0, 65537, 589835, 0, 65537, 589836, 0, 65537, 589837, 0, 65537, 589838, 0, 65537, 589839, 0, 65537, 589840, 0, 65537, 589841, 0, 65537, 589842, 0, 65537, 589843, 0, 65537, 589844, 0, 65538, 720895, 0, 65536, 655360, 0, 65537, 655361, 0, 65537, 655362, 0, 65537, 655363, 0, 65537, 655364, 0, 65537, 655365, 0, 65537, 655366, 0, 65537, 655367, 0, 65537, 655368, 0, 65537, 655369, 0, 65537, 655370, 0, 65537, 655371, 0, 65537, 655372, 0, 65537, 655373, 0, 65537, 655374, 0, 65537, 655375, 0, 65537, 655376, 0, 65537, 655377, 0, 65537, 655378, 0, 65537, 655379, 0, 65537, 655380, 0, 65538, 786431, 0, 131072, 720896, 0, 131073, 720897, 0, 131073, 720898, 0, 131073, 720899, 0, 131073, 720900, 0, 131073, 720901, 0, 131073, 720902, 0, 131073, 720903, 0, 131073, 720904, 0, 131073, 720905, 0, 131073, 720906, 0, 131073, 720907, 0, 131073, 720908, 0, 131073, 720909, 0, 131073, 720910, 0, 131073, 720911, 0, 131073, 720912, 0, 131073, 720913, 0, 131073, 720914, 0, 131073, 720915, 0, 131073, 720916, 0, 131074 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="BackgroundMapFix" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( 1, 14, 0, 18, 16, 0, 65536, 4, 0, 65539, 8, 0, 65548, 8, 0, 131075, 9, 0, 131084, 8, 0, 196610, 3, 0, 196611, 8, 0, 196620, 9, 0, 196625, 3, 0, 262145, 15, 0, 262147, 8, 0, 262156, 8, 0, 262162, 17, 0, 327683, 8, 0, 327685, 3, 0, 327689, 3, 0, 327690, 3, 0, 327692, 8, 0, 327696, 3, 0, 393218, 15, 0, 393223, 3, 0, 393224, 3, 0, 393227, 3, 0, 393228, 8, 0, 393233, 17, 0, 458758, 3, 0, 458761, 17, 0, 458762, 15, 0, 458765, 3, 0, 524291, 15, 0, 524295, 17, 0, 524300, 15, 0, 524304, 17, 0 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Brother1" type="Sprite" parent="."]
+position = Vector2( 160, 72 )
+texture = ExtResource( 3 )
+hframes = 6
+frame = 5
+
+[node name="zzz" parent="Brother1" instance=ExtResource( 4 )]
+modulate = Color( 0.956863, 0.705882, 0.105882, 1 )
+process_material = SubResource( 7 )
+
+[node name="Brother2" type="Sprite" parent="."]
+position = Vector2( 128, 104 )
+texture = ExtResource( 6 )
+hframes = 6
+frame = 5
+
+[node name="zzz" parent="Brother2" instance=ExtResource( 4 )]
+modulate = Color( 0.219608, 0.85098, 0.45098, 1 )
+position = Vector2( -3, 3 )
+
+[node name="Brother3" type="Sprite" parent="."]
+position = Vector2( 192, 104 )
+texture = ExtResource( 2 )
+flip_h = true
+hframes = 6
+frame = 5
+
+[node name="zzz" parent="Brother3" instance=ExtResource( 4 )]
+modulate = Color( 0.235294, 0.67451, 0.843137, 1 )
+position = Vector2( -3, 3 )
+process_material = SubResource( 14 )
+
+[node name="UI" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 320.0
+margin_bottom = 180.0
+theme = ExtResource( 7 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Created" type="Label" parent="UI"]
+modulate = Color( 0.811765, 0.776471, 0.721569, 1 )
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = -14.0
+margin_right = 120.0
+custom_fonts/font = SubResource( 15 )
+text = "Created by Ahmed Essoubai"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="TextureRect" parent="UI"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -72.0
+margin_top = -58.0
+margin_right = 93.0
+margin_bottom = -43.0
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="UI"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -40.0
+margin_top = -42.0
+margin_right = 49.0
+margin_bottom = -32.0
+custom_fonts/font = ExtResource( 10 )
+text = "For playing the game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Start" type="Label" parent="UI"]
+modulate = Color( 1, 1, 1, 0.353411 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -40.0
+margin_top = 46.0
+margin_right = 51.0
+margin_bottom = 73.0
+rect_rotation = 2.30583
+custom_fonts/font = SubResource( 16 )
+text = "Press any key to 
+go to main screen"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Count" type="Label" parent="UI"]
+margin_left = 224.0
+margin_top = 80.0
+margin_right = 264.0
+margin_bottom = 96.0
+text = "0/10"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="UI"]
+margin_left = 192.0
+margin_top = 72.0
+margin_right = 208.0
+margin_bottom = 88.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Animation" type="AnimationPlayer" parent="UI"]
+anims/Idel = SubResource( 17 )
+anims/Show = SubResource( 18 )
+
+[node name="AudioManager" parent="." instance=ExtResource( 11 )]
+
+[node name="EndBlock" parent="." instance=ExtResource( 13 )]
+position = Vector2( 160, 88 )
+Transition = NodePath("")
+AudioManager = NodePath("../AudioManager")
+
+[node name="EndBlock2" parent="." instance=ExtResource( 13 )]
+position = Vector2( 280, 56 )
+TextureColor = Color( 0.235294, 0.67451, 0.843137, 1 )
+Transition = NodePath("")
+AudioManager = NodePath("../AudioManager")
+
+[node name="EndBlock3" parent="." instance=ExtResource( 13 )]
+position = Vector2( 56, 88 )
+TextureColor = Color( 0.219608, 0.85098, 0.45098, 1 )
+Transition = NodePath("")
+AudioManager = NodePath("../AudioManager")

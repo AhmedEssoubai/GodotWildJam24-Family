@@ -1,0 +1,89 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/World/Trap.gd" type="Script" id=1]
+[ext_resource path="res://assets/environment/trap.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8, 8 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 4, 4 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Fall"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Collision:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 5.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.4, 1, 5.8, 5.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1.41421, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 1, 0 ), Vector2( -1, 0 ), Vector2( 0, 0 ), Vector2( 0, 4 ), Vector2( 0, 4 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4, 1, 5.8, 6 ),
+"transitions": PoolRealArray( 1, 1.8025, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "finished"
+} ]
+}
+
+[node name="Trap" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource( 1 )
+AudioManager = NodePath("../AudioManager")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="DetectObjects" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 9
+
+[node name="Collision" type="CollisionShape2D" parent="DetectObjects"]
+position = Vector2( 0, -8 )
+shape = SubResource( 2 )
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+playback_speed = 4.0
+anims/Fall = SubResource( 3 )
+[connection signal="body_entered" from="DetectObjects" to="." method="falling"]

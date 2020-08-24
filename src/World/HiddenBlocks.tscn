@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/Scenes/HiddenBlocks.gd" type="Script" id=1]
+
+[node name="HiddenBlocks" type="Node2D"]
+position = Vector2( 608, 232 )
+script = ExtResource( 1 )
+TimeBetween = 2.0
+AudioManager = NodePath("../AudioManager")
+RedBlocks = [ NodePath("../HiddenBlockR") ]
+BlueBlocks = [ NodePath("../HiddenBlockB") ]
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+volume_db = -10.0
+max_distance = 4000.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+[connection signal="timeout" from="Timer" to="." method="switch"]

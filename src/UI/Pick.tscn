@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/font/hint_font.tres" type="DynamicFont" id=1]
+
+[sub_resource type="Animation" id=4]
+resource_name = "Show"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Node/E:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.001, 0.3 ),
+"transitions": PoolRealArray( 0.482968, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2, 0 ), Vector2( 2, 1e-05 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Node/E:custom_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 0.466516, 1 ),
+"update": 0,
+"values": [ Color( 0.811765, 0.776471, 0.721569, 0.215686 ), Color( 0.811765, 0.776471, 0.721569, 1 ) ]
+}
+
+[node name="Node" type="Node"]
+
+[node name="E" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -164.308
+margin_top = -105.208
+margin_right = -159.308
+margin_bottom = -95.2084
+rect_scale = Vector2( 2, 1e-05 )
+rect_pivot_offset = Vector2( 2, 5 )
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.811765, 0.776471, 0.721569, 0.215686 )
+text = "e"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EAnimation" type="AnimationPlayer" parent="."]
+playback_speed = 2.0
+anims/Show = SubResource( 4 )

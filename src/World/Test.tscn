@@ -1,0 +1,139 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://src/World/WorldTileSet.tres" type="TileSet" id=1]
+[ext_resource path="res://src/Audio/AudioManager.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/UI/Transition.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/World/GemBreaking.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/Characters/Brother1.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/Characters/Brother3.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/World/Coin.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/World/Gem.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/World/BreakTimer.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/UI/GamePlayUI.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/Characters/Brother2.tscn" type="PackedScene" id=11]
+[ext_resource path="res://src/World/EndBlock.tscn" type="PackedScene" id=12]
+[ext_resource path="res://src/World/ParallaxBackground.tscn" type="PackedScene" id=13]
+[ext_resource path="res://src/World/HiddenPath.tscn" type="PackedScene" id=14]
+[ext_resource path="res://src/World/GemK.gd" type="Script" id=15]
+[ext_resource path="res://assets/pickups/gem.png" type="Texture" id=16]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 4.01486
+
+[sub_resource type="Curve" id=2]
+min_value = -100.0
+max_value = 100.0
+_data = [ Vector2( 0.0251256, 67.7273 ), 0.0, 0.0, 0, 0, Vector2( 0.994975, -59.5455 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=3]
+colors = PoolColorArray( 1, 1, 1, 1, 0.956863, 0.705882, 0.105882, 0.196078 )
+
+[node name="Level" type="Node2D"]
+
+[node name="MapLayer1" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+collision_layer = 2
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( -65536, 0, 0, -65535, 0, 1, -65534, 0, 1, -65533, 0, 1, -65532, 0, 1, -65531, 0, 1, -65530, 0, 1, -65529, 0, 1, -65528, 0, 1, -65527, 0, 1, -65526, 0, 1, -65525, 0, 1, -65524, 0, 1, -65523, 0, 1, -65522, 0, 1, -65521, 0, 1, -65520, 0, 1, -65519, 0, 1, -65518, 0, 1, -65517, 0, 2, 65535, 0, 0, 0, 0, 65537, 1, 0, 65537, 2, 0, 65537, 3, 0, 65537, 4, 0, 131073, 5, 0, 131073, 6, 0, 131073, 7, 0, 131073, 8, 0, 131073, 9, 0, 131073, 10, 0, 131073, 11, 0, 131073, 12, 0, 131073, 13, 0, 131073, 14, 0, 131073, 15, 0, 131073, 16, 0, 131073, 17, 0, 131073, 18, 0, 131073, 19, 0, 65537, 20, 0, 2, 131071, 0, 65536, 65536, 0, 65537, 65537, 0, 65537, 65538, 0, 65537, 65539, 0, 65538, 65555, 0, 65536, 65556, 0, 65538, 196607, 0, 65536, 131072, 0, 65537, 131073, 0, 65537, 131074, 0, 65537, 131075, 0, 65537, 131076, 0, 1, 131077, 0, 1, 131078, 0, 2, 131091, 0, 65536, 131092, 0, 65538, 262143, 0, 65536, 196608, 0, 65537, 196609, 0, 131073, 196610, 0, 131073, 196611, 0, 131073, 196612, 0, 131073, 196613, 0, 65537, 196614, 0, 65537, 196615, 0, 1, 196616, 0, 1, 196617, 0, 1, 196618, 0, 1, 196619, 0, 2, 196622, 18, 0, 196623, 19, 0, 196624, 20, 0, 196627, 0, 65536, 196628, 0, 65538, 327679, 0, 65536, 262144, 0, 65538, 262149, 0, 131072, 262150, 0, 131073, 262151, 0, 131073, 262152, 0, 131073, 262153, 0, 131073, 262154, 0, 131073, 262155, 0, 131074, 262163, 0, 65536, 262164, 0, 65538, 393215, 0, 65536, 327680, 0, 65538, 327699, 0, 65536, 327700, 0, 65538, 458751, 0, 65536, 393216, 0, 65538, 393235, 0, 65536, 393236, 0, 65538, 524287, 0, 65536, 458752, 0, 65537, 458753, 0, 1, 458754, 0, 1, 458755, 0, 2, 458765, 0, 0, 458766, 0, 2, 458770, 0, 0, 458771, 0, 65537, 458772, 0, 65538, 589823, 0, 65536, 524288, 0, 65537, 524289, 0, 65537, 524290, 0, 65537, 524291, 0, 65538, 524294, 3, 0, 524298, 3, 0, 524301, 0, 65536, 524302, 0, 65538, 524305, 0, 0, 524306, 0, 65537, 524307, 0, 65537, 524308, 0, 65538, 655359, 0, 65536, 589824, 0, 65537, 589825, 0, 65537, 589826, 0, 65537, 589827, 0, 65537, 589828, 0, 1, 589829, 0, 1, 589830, 0, 1, 589831, 0, 1, 589832, 0, 1, 589833, 0, 1, 589834, 0, 2, 589837, 0, 65536, 589838, 0, 65538, 589841, 0, 65536, 589842, 0, 65537, 589843, 0, 65537, 589844, 0, 65538, 720895, 0, 65536, 655360, 0, 65537, 655361, 0, 65537, 655362, 0, 65537, 655363, 0, 65537, 655364, 0, 65537, 655365, 0, 65537, 655366, 0, 65537, 655367, 0, 65537, 655368, 0, 65537, 655369, 0, 65537, 655370, 0, 65538, 655373, 0, 65536, 655374, 0, 65538, 655377, 0, 65536, 655378, 0, 65537, 655379, 0, 65537, 655380, 0, 65538, 786431, 0, 131072, 720896, 0, 131073, 720897, 0, 131073, 720898, 0, 131073, 720899, 0, 131073, 720900, 0, 131073, 720901, 0, 131073, 720902, 0, 131073, 720903, 0, 131073, 720904, 0, 131073, 720905, 0, 131073, 720906, 0, 65537, 720907, 0, 1, 720908, 0, 1, 720909, 0, 65537, 720910, 0, 65537, 720911, 0, 1, 720912, 0, 1, 720913, 0, 65537, 720914, 0, 131073, 720915, 0, 131073, 720916, 0, 131074, 786442, 0, 131072, 786443, 0, 131073, 786444, 0, 131073, 786445, 0, 131073, 786446, 0, 131073, 786447, 0, 131073, 786448, 0, 131073, 786449, 0, 131074 )
+
+[node name="MapLayer2" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+collision_layer = 2
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( 3, 14, 0, 19, 16, 0, 131075, 15, 0, 196608, 14, 0, 196613, 16, 0, 196614, 15, 0, 458752, 15, 0, 458771, 17, 0, 524291, 15, 0, 524292, 11, 0, 524306, 17, 0, 589828, 15, 0, 720906, 15, 0, 720909, 17, 0, 720910, 15, 0, 720913, 17, 0 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="MapDanger" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+collision_layer = 4
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( 655371, 5, 0, 655372, 5, 0, 655375, 5, 0, 655376, 5, 0 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Brother1" parent="." instance=ExtResource( 5 )]
+position = Vector2( 120, 136 )
+AudioManager = NodePath("../AudioManager")
+Transition = NodePath("../Transition")
+
+[node name="Brother2" parent="." instance=ExtResource( 11 )]
+position = Vector2( 224, 104 )
+AudioManager = NodePath("../AudioManager")
+Transition = NodePath("../Transition")
+
+[node name="Brother3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 144, 40 )
+AudioManager = NodePath("../AudioManager")
+Transition = NodePath("../Transition")
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 13 )]
+
+[node name="Gem2" type="KinematicBody2D" parent="."]
+visible = false
+position = Vector2( 54.0326, 96 )
+collision_layer = 0
+collision_mask = 0
+script = ExtResource( 15 )
+
+[node name="Collision" type="CollisionShape2D" parent="Gem2"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Gem2"]
+texture = ExtResource( 16 )
+
+[node name="Gem" parent="." instance=ExtResource( 8 )]
+position = Vector2( 136, 24 )
+AudioManager = NodePath("../AudioManager")
+
+[node name="BreakTimer" parent="." instance=ExtResource( 9 )]
+
+[node name="Transition" parent="." instance=ExtResource( 3 )]
+OtherBackground = NodePath("../ParallaxBackground/CanvasModulate")
+UIMnager = NodePath("../CanvasLayer/UI")
+
+[node name="GemBreakingCPU" type="CPUParticles2D" parent="."]
+visible = false
+emitting = false
+amount = 16
+one_shot = true
+explosiveness = 0.75
+flag_align_y = true
+direction = Vector2( 0, 0 )
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 1.0
+linear_accel_curve = SubResource( 2 )
+color_ramp = SubResource( 3 )
+
+[node name="GemBreaking" parent="." instance=ExtResource( 4 )]
+
+[node name="Coin" parent="." instance=ExtResource( 7 )]
+position = Vector2( 74, 24 )
+Hidden = true
+AudioManager = NodePath("../AudioManager")
+
+[node name="HiddenPaths" type="Node" parent="."]
+
+[node name="HiddenPath" parent="HiddenPaths" instance=ExtResource( 14 )]
+tile_data = PoolIntArray( 3, 8, 0, 4, 8, 0, 5, 8, 0, 6, 9, 0, 65539, 8, 0, 65540, 8, 0, 65541, 8, 0, 65542, 3, 0, 131075, 8, 0, 131076, 8, 0, 131077, 8, 0, 131078, 3, 0 )
+HiddenItem = NodePath("../../Coin")
+AudioManager = NodePath("../../AudioManager")
+
+[node name="EndBlock" parent="." instance=ExtResource( 12 )]
+position = Vector2( 248, 40 )
+AudioManager = NodePath("../AudioManager")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource( 10 )]
+
+[node name="AudioManager" parent="." instance=ExtResource( 2 )]
